@@ -20,10 +20,11 @@
     <div id="app">
         <div class="container">
             <button @click="getList">Scopri la lista</button>
-            <p>{{myList}}</p>
+            <h3 v-for="item in myList"> {{item}}</h3>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Inserisci altro</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1">
+                <input @keyup.enter="addNew" v-model="newTask" type="email" class="form-control" id="exampleFormControlInput1" name="newTask">
+                <button class="btn btn-primary" @click="addNew">Inserisci nuovo</button>
             </div>
         </div>
     </div>
