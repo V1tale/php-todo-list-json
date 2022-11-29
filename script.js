@@ -12,7 +12,7 @@ createApp({
     methods: {
     getList() {
         axios.get("server.php").then((resp) => {
-            this.myList =resp.data;
+            this.myList = resp.data;
         })
     },
     addNew() {

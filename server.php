@@ -1,15 +1,16 @@
 <?php 
-$list = ["guardare il pollo che si scongela", "aggiungere zucchero ai popcorn", "riscaldare il caffè", "portare a spasso il pitone"];
-
+$list = file_get_contents("todo.json");
+$listPhp = json_decode($list, true);
 
 if (isset($_POST["newTask"])) {
     $newOne = $_POST["newTask"];
-    $list[] = $newOne;
+    $listPhp[] = ["text" => $newOne, "done" => false];
+    file_put_contents("todo.json", json_encode($listPhp));
 }
 
 
 header("Content-Type: application/json");
-echo json_encode($list);
+echo json_encode($listPhp);
 
 
 ?>
